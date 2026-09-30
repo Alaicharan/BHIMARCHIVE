@@ -1,0 +1,2698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BHIMARCHIVE | Dr. B. R. Ambedkar Digital Heritage</title>
+
+<meta name="description"
+content="BHIMARCHIVE - AI powered digital heritage archive and knowledge platform dedicated to Dr. B. R. Ambedkar.">
+
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+:root{
+    --navy:#07111f;
+    --navy2:#0d1b2e;
+    --blue:#1667d9;
+    --cyan:#39bdf8;
+    --gold:#d7a84b;
+    --gold2:#f0c76b;
+    --white:#ffffff;
+    --muted:#9eacc0;
+    --glass:rgba(255,255,255,.06);
+    --border:rgba(255,255,255,.11);
+    --shadow:0 25px 70px rgba(0,0,0,.35);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:
+        radial-gradient(circle at 80% 10%,rgba(22,103,217,.18),transparent 30%),
+        radial-gradient(circle at 10% 70%,rgba(215,168,75,.08),transparent 25%),
+        var(--navy);
+    color:white;
+    overflow-x:hidden;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font-family:inherit;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:999;
+    backdrop-filter:blur(18px);
+    background:rgba(7,17,31,.72);
+    border-bottom:1px solid var(--border);
+}
+
+.nav-container{
+    max-width:1250px;
+    margin:auto;
+    height:78px;
+    padding:0 25px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:20px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.logo-icon{
+    width:42px;
+    height:42px;
+    border-radius:13px;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(135deg,var(--gold),#8c5d13);
+    color:#08101c;
+    font-weight:900;
+}
+
+.logo span{
+    color:var(--gold2);
+}
+
+.nav-links{
+    display:flex;
+    gap:27px;
+    align-items:center;
+}
+
+.nav-links a{
+    font-size:13px;
+    color:#c6d0df;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:var(--gold2);
+}
+
+.nav-btn{
+    padding:10px 17px;
+    border:1px solid rgba(215,168,75,.4);
+    border-radius:30px;
+    color:var(--gold2)!important;
+}
+
+.menu-btn{
+    display:none;
+    font-size:25px;
+    cursor:pointer;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    padding:140px 7% 90px;
+    overflow:hidden;
+}
+
+.hero-grid{
+    position:absolute;
+    inset:0;
+    opacity:.16;
+    background-image:
+        linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);
+    background-size:55px 55px;
+    mask-image:linear-gradient(to bottom,black,transparent);
+}
+
+.hero-content{
+    max-width:1250px;
+    width:100%;
+    margin:auto;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:70px;
+    align-items:center;
+    position:relative;
+    z-index:2;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 14px;
+    border:1px solid rgba(215,168,75,.3);
+    background:rgba(215,168,75,.08);
+    color:var(--gold2);
+    border-radius:30px;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    margin-bottom:24px;
+}
+
+.hero h1{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(50px,7vw,88px);
+    line-height:.96;
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    color:var(--gold2);
+}
+
+.hero-sub{
+    color:#aebacc;
+    font-size:17px;
+    line-height:1.8;
+    max-width:650px;
+    margin-bottom:32px;
+}
+
+.hero-actions{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.primary-btn,
+.secondary-btn{
+    padding:14px 22px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:700;
+    border:none;
+    transition:.3s;
+}
+
+.primary-btn{
+    background:linear-gradient(135deg,var(--gold2),#b67d1e);
+    color:#07111f;
+}
+
+.primary-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 30px rgba(215,168,75,.2);
+}
+
+.secondary-btn{
+    background:rgba(255,255,255,.05);
+    border:1px solid var(--border);
+    color:white;
+}
+
+.secondary-btn:hover{
+    background:rgba(255,255,255,.1);
+}
+
+/* =========================================================
+   HERO IMAGE
+========================================================= */
+
+.hero-visual{
+    position:relative;
+    height:590px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.glow{
+    position:absolute;
+    width:360px;
+    height:360px;
+    background:var(--blue);
+    filter:blur(120px);
+    opacity:.25;
+}
+
+.portrait-card{
+    width:360px;
+    height:500px;
+    border-radius:25px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.15);
+    box-shadow:var(--shadow);
+    position:relative;
+    transform:rotate(2deg);
+    background:#111;
+}
+
+.portrait-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:contrast(1.04) saturate(.85);
+}
+
+.portrait-overlay{
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(to top,rgba(0,0,0,.9),transparent 55%);
+}
+
+.portrait-caption{
+    position:absolute;
+    bottom:25px;
+    left:25px;
+    right:25px;
+}
+
+.portrait-caption small{
+    color:var(--gold2);
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+.portrait-caption h3{
+    font-family:'Playfair Display',serif;
+    font-size:27px;
+    margin-top:5px;
+}
+
+.floating-card{
+    position:absolute;
+    padding:15px 18px;
+    border-radius:15px;
+    background:rgba(12,28,47,.85);
+    backdrop-filter:blur(15px);
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+}
+
+.float-one{
+    top:90px;
+    right:-5px;
+}
+
+.float-two{
+    bottom:70px;
+    left:-25px;
+}
+
+.floating-card strong{
+    display:block;
+    color:var(--gold2);
+    font-size:19px;
+}
+
+.floating-card span{
+    color:#a5b1c0;
+    font-size:11px;
+}
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+section{
+    padding:105px 7%;
+}
+
+.section-container{
+    max-width:1250px;
+    margin:auto;
+}
+
+.section-head{
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+    align-items:end;
+    margin-bottom:45px;
+}
+
+.section-label{
+    color:var(--gold2);
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-size:11px;
+    font-weight:700;
+    margin-bottom:12px;
+}
+
+.section-title{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(35px,4vw,53px);
+}
+
+.section-description{
+    max-width:520px;
+    color:var(--muted);
+    line-height:1.7;
+    font-size:14px;
+}
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats{
+    padding-top:35px;
+    padding-bottom:70px;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.stat-card{
+    background:var(--glass);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:28px;
+    text-align:center;
+    transition:.3s;
+}
+
+.stat-card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(215,168,75,.4);
+}
+
+.stat-number{
+    font-size:35px;
+    font-weight:800;
+    color:var(--gold2);
+}
+
+.stat-label{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:7px;
+}
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.search-area{
+    background:linear-gradient(135deg,#0c2037,#081423);
+}
+
+.search-box{
+    max-width:850px;
+    margin:30px auto 0;
+    display:flex;
+    padding:7px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.05);
+    border-radius:15px;
+}
+
+.search-box input{
+    flex:1;
+    border:none;
+    outline:none;
+    background:transparent;
+    color:white;
+    padding:15px;
+    font-size:15px;
+}
+
+.search-box button{
+    border:none;
+    background:var(--gold2);
+    padding:0 25px;
+    border-radius:10px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.search-results{
+    max-width:850px;
+    margin:15px auto;
+    display:none;
+}
+
+.result{
+    padding:16px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    margin-top:8px;
+    background:rgba(255,255,255,.04);
+}
+
+.result b{
+    color:var(--gold2);
+}
+
+.result p{
+    color:#aab7c7;
+    margin-top:5px;
+    font-size:13px;
+}
+
+/* =========================================================
+   FEATURE CARDS
+========================================================= */
+
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.feature-card{
+    padding:30px;
+    background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.025));
+    border:1px solid var(--border);
+    border-radius:22px;
+    transition:.35s;
+    position:relative;
+    overflow:hidden;
+}
+
+.feature-card:before{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:120px;
+    background:var(--blue);
+    filter:blur(70px);
+    opacity:.08;
+    right:-40px;
+    top:-40px;
+}
+
+.feature-card:hover{
+    transform:translateY(-8px);
+    border-color:rgba(215,168,75,.35);
+}
+
+.feature-icon{
+    width:52px;
+    height:52px;
+    border-radius:15px;
+    display:grid;
+    place-items:center;
+    background:rgba(215,168,75,.1);
+    color:var(--gold2);
+    font-size:23px;
+    margin-bottom:22px;
+}
+
+.feature-card h3{
+    font-size:18px;
+    margin-bottom:12px;
+}
+
+.feature-card p{
+    color:var(--muted);
+    line-height:1.7;
+    font-size:13px;
+}
+
+/* =========================================================
+   ARCHIVE
+========================================================= */
+
+.archive-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.archive-card{
+    border:1px solid var(--border);
+    border-radius:20px;
+    overflow:hidden;
+    background:#0c1828;
+    transition:.3s;
+}
+
+.archive-card:hover{
+    transform:translateY(-7px);
+}
+
+.archive-img{
+    height:210px;
+    overflow:hidden;
+}
+
+.archive-img img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.archive-card:hover img{
+    transform:scale(1.08);
+}
+
+.archive-body{
+    padding:22px;
+}
+
+.archive-tag{
+    color:var(--gold2);
+    text-transform:uppercase;
+    font-size:10px;
+    letter-spacing:2px;
+}
+
+.archive-body h3{
+    margin:9px 0;
+    font-size:18px;
+}
+
+.archive-body p{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.6;
+}
+
+/* =========================================================
+   KNOWLEDGE GRAPH
+========================================================= */
+
+.graph-section{
+    background:
+        radial-gradient(circle at center,rgba(22,103,217,.13),transparent 55%),
+        #081321;
+}
+
+.graph{
+    height:500px;
+    border:1px solid var(--border);
+    border-radius:25px;
+    position:relative;
+    overflow:hidden;
+    background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+    background-size:40px 40px;
+}
+
+.node{
+    position:absolute;
+    padding:15px 20px;
+    border-radius:50px;
+    border:1px solid rgba(215,168,75,.4);
+    background:#102239;
+    box-shadow:0 0 30px rgba(22,103,217,.15);
+    font-size:12px;
+    z-index:2;
+}
+
+.node.main{
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    background:linear-gradient(135deg,#d7a84b,#9b6b18);
+    color:#07111f;
+    font-weight:800;
+    padding:20px 27px;
+}
+
+.node.n1{left:12%;top:22%}
+.node.n2{right:12%;top:18%}
+.node.n3{left:15%;bottom:18%}
+.node.n4{right:15%;bottom:20%}
+.node.n5{left:48%;top:12%}
+.node.n6{left:46%;bottom:10%}
+
+.connection{
+    position:absolute;
+    height:1px;
+    background:linear-gradient(90deg,transparent,var(--gold2),transparent);
+    transform-origin:left center;
+    opacity:.45;
+}
+
+.line1{width:390px;left:30%;top:42%;transform:rotate(160deg)}
+.line2{width:370px;left:53%;top:43%;transform:rotate(20deg)}
+.line3{width:350px;left:33%;top:55%;transform:rotate(-160deg)}
+.line4{width:360px;left:53%;top:55%;transform:rotate(-20deg)}
+.line5{width:230px;left:50%;top:42%;transform:rotate(-90deg)}
+.line6{width:230px;left:50%;top:58%;transform:rotate(90deg)}
+
+/* =========================================================
+   TIMELINE
+========================================================= */
+
+.timeline{
+    position:relative;
+    max-width:900px;
+    margin:auto;
+}
+
+.timeline:before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:0;
+    bottom:0;
+    width:1px;
+    background:linear-gradient(var(--gold2),transparent);
+}
+
+.timeline-item{
+    width:50%;
+    padding:20px 45px;
+    position:relative;
+}
+
+.timeline-item:nth-child(even){
+    margin-left:50%;
+}
+
+.timeline-dot{
+    position:absolute;
+    width:13px;
+    height:13px;
+    background:var(--gold2);
+    border-radius:50%;
+    top:30px;
+    box-shadow:0 0 20px rgba(215,168,75,.5);
+}
+
+.timeline-item:nth-child(odd) .timeline-dot{
+    right:-7px;
+}
+
+.timeline-item:nth-child(even) .timeline-dot{
+    left:-7px;
+}
+
+.timeline-card{
+    padding:22px;
+    border:1px solid var(--border);
+    background:var(--glass);
+    border-radius:17px;
+}
+
+.timeline-card span{
+    color:var(--gold2);
+    font-weight:800;
+}
+
+.timeline-card h3{
+    margin:7px 0;
+}
+
+.timeline-card p{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.6;
+}
+
+/* =========================================================
+   AI ASSISTANT
+========================================================= */
+
+.ai-section{
+    background:linear-gradient(135deg,#0b192b,#101c2d);
+}
+
+.ai-container{
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+    gap:30px;
+}
+
+.ai-info{
+    padding:35px;
+    border:1px solid var(--border);
+    border-radius:25px;
+    background:var(--glass);
+}
+
+.ai-info h3{
+    font-family:'Playfair Display',serif;
+    font-size:34px;
+    margin-bottom:15px;
+}
+
+.ai-info p{
+    color:var(--muted);
+    line-height:1.8;
+}
+
+.chat-box{
+    border:1px solid var(--border);
+    border-radius:25px;
+    overflow:hidden;
+    background:#07111d;
+}
+
+.chat-header{
+    padding:18px 22px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.status-dot{
+    width:9px;
+    height:9px;
+    background:#38d39f;
+    border-radius:50%;
+    box-shadow:0 0 12px #38d39f;
+}
+
+.chat-messages{
+    height:330px;
+    padding:20px;
+    overflow-y:auto;
+}
+
+.message{
+    max-width:80%;
+    padding:13px 16px;
+    border-radius:15px;
+    margin-bottom:12px;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.bot{
+    background:#102239;
+    color:#c9d4e2;
+}
+
+.user{
+    background:var(--blue);
+    margin-left:auto;
+}
+
+.chat-input{
+    display:flex;
+    padding:10px;
+    border-top:1px solid var(--border);
+}
+
+.chat-input input{
+    flex:1;
+    background:transparent;
+    border:none;
+    outline:none;
+    color:white;
+    padding:13px;
+}
+
+.chat-input button{
+    background:var(--gold2);
+    border:none;
+    border-radius:10px;
+    padding:0 20px;
+    cursor:pointer;
+    font-weight:800;
+}
+
+/* =========================================================
+   LANGUAGE
+========================================================= */
+
+.language-grid{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:12px;
+}
+
+.lang{
+    padding:14px 20px;
+    border:1px solid var(--border);
+    border-radius:40px;
+    background:var(--glass);
+    cursor:pointer;
+    transition:.3s;
+}
+
+.lang:hover,
+.lang.active{
+    background:var(--gold2);
+    color:#07111f;
+}
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta{
+    margin:80px auto;
+    max-width:1100px;
+    border:1px solid rgba(215,168,75,.25);
+    background:
+        radial-gradient(circle at right,rgba(22,103,217,.2),transparent 45%),
+        linear-gradient(135deg,#0f2238,#091321);
+    border-radius:30px;
+    padding:65px;
+    text-align:center;
+}
+
+.cta h2{
+    font-family:'Playfair Display',serif;
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.cta p{
+    max-width:650px;
+    margin:auto;
+    color:var(--muted);
+    line-height:1.7;
+    margin-bottom:25px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    border-top:1px solid var(--border);
+    padding:45px 7%;
+    background:#050d17;
+}
+
+.footer-content{
+    max-width:1250px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+}
+
+.footer-brand{
+    max-width:400px;
+}
+
+.footer-brand p{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.7;
+    margin-top:12px;
+}
+
+.footer-links{
+    display:flex;
+    gap:20px;
+    align-items:center;
+}
+
+.footer-links a{
+    color:#9eacc0;
+    font-size:12px;
+}
+
+.footer-bottom{
+    max-width:1250px;
+    margin:30px auto 0;
+    padding-top:20px;
+    border-top:1px solid var(--border);
+    color:#657286;
+    font-size:11px;
+}
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(10px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:2000;
+    padding:20px;
+}
+
+.modal-box{
+    max-width:600px;
+    width:100%;
+    background:#0b192a;
+    border:1px solid var(--border);
+    border-radius:25px;
+    padding:35px;
+    position:relative;
+}
+
+.close{
+    position:absolute;
+    top:15px;
+    right:20px;
+    cursor:pointer;
+    font-size:25px;
+    color:#9eacc0;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1000px){
+
+    .hero-content{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .hero-sub{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-actions{
+        justify-content:center;
+    }
+
+    .hero-visual{
+        height:520px;
+    }
+
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .feature-grid,
+    .archive-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .ai-container{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:720px){
+
+    .nav-links{
+        position:absolute;
+        top:78px;
+        left:0;
+        width:100%;
+        background:#07111f;
+        flex-direction:column;
+        padding:25px;
+        display:none;
+        border-bottom:1px solid var(--border);
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .menu-btn{
+        display:block;
+    }
+
+    .nav-links .nav-btn{
+        width:100%;
+        text-align:center;
+    }
+
+    section{
+        padding:75px 5%;
+    }
+
+    .stats-grid,
+    .feature-grid,
+    .archive-grid{
+        grid-template-columns:1fr;
+    }
+
+    .section-head{
+        display:block;
+    }
+
+    .section-description{
+        margin-top:15px;
+    }
+
+    .portrait-card{
+        width:300px;
+        height:420px;
+    }
+
+    .floating-card{
+        display:none;
+    }
+
+    .timeline:before{
+        left:8px;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(even){
+        width:100%;
+        margin-left:0;
+        padding-left:35px;
+        padding-right:0;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot{
+        left:2px;
+        right:auto;
+    }
+
+    .graph{
+        height:450px;
+    }
+
+    .node{
+        transform:scale(.85);
+    }
+
+    .node.main{
+        transform:translate(-50%,-50%) scale(.85);
+    }
+
+    .cta{
+        padding:40px 20px;
+    }
+
+    .cta h2{
+        font-size:34px;
+    }
+
+    .footer-content{
+        flex-direction:column;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<nav class="navbar">
+
+<div class="nav-container">
+
+<a href="#home" class="logo">
+    <div class="logo-icon">S</div>
+    SAHA<span>YAK</span>
+</a>
+
+<div class="nav-links" id="navLinks">
+
+<a href="#archive">Archive</a>
+<a href="#features">AI Features</a>
+<a href="#timeline">Timeline</a>
+<a href="#knowledge">Knowledge Graph</a>
+<a href="#assistant">AI Assistant</a>
+<a href="#accessibility">Accessibility</a>
+
+<a
+href="https://drambedkarwritings.gov.in/content/"
+target="_blank"
+class="nav-btn">
+Official Archive ↗
+</a>
+
+</div>
+
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+</div>
+</nav>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero" id="home">
+
+<div class="hero-grid"></div>
+
+<div class="hero-content">
+
+<div>
+
+<div class="badge">
+● AI DIGITAL HERITAGE PLATFORM
+</div>
+
+<h1>
+Preserve the<br>
+<span>Legacy.</span><br>
+Explore the Ideas.
+</h1>
+
+<p class="hero-sub">
+BHIMARCHIVE is an AI-powered digital heritage and institutional
+knowledge platform dedicated to preserving, discovering and
+experiencing the writings, speeches, photographs and historical
+contributions of Dr. B. R. Ambedkar.
+</p>
+
+<div class="hero-actions">
+
+<a href="#assistant" class="primary-btn">
+Explore with AI →
+</a>
+
+<a
+href="https://drambedkarwritings.gov.in/content/"
+target="_blank"
+class="secondary-btn">
+Visit Official Archive
+</a>
+
+</div>
+
+</div>
+
+
+<div class="hero-visual">
+
+<div class="glow"></div>
+
+<div class="portrait-card">
+
+<img
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Dr%20Ambedkar.jpg"
+alt="Dr. B. R. Ambedkar">
+
+<div class="portrait-overlay"></div>
+
+<div class="portrait-caption">
+
+<small>Digital Heritage</small>
+
+<h3>
+Dr. B. R. Ambedkar
+</h3>
+
+</div>
+
+</div>
+
+<div class="floating-card float-one">
+<strong>10+</strong>
+<span>Indian Languages</span>
+</div>
+
+<div class="floating-card float-two">
+<strong>AI</strong>
+<span>Semantic Research</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     STATS
+===================================================== -->
+
+<section class="stats">
+
+<div class="section-container">
+
+<div class="stats-grid">
+
+<div class="stat-card">
+<div class="stat-number counter" data-target="10000">0</div>
+<div class="stat-label">Target Digital Documents</div>
+</div>
+
+<div class="stat-card">
+<div class="stat-number counter" data-target="10">0</div>
+<div class="stat-label">Indian Languages</div>
+</div>
+
+<div class="stat-card">
+<div class="stat-number counter" data-target="500">0</div>
+<div class="stat-label">Daily Interactions</div>
+</div>
+
+<div class="stat-card">
+<div class="stat-number">24/7</div>
+<div class="stat-label">Digital Access</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     PROBLEM
+===================================================== -->
+
+<section>
+
+<div class="section-container">
+
+<div class="section-head">
+
+<div>
+<div class="section-label">The Challenge</div>
+
+<h2 class="section-title">
+From scattered archives<br>
+to connected knowledge.
+</h2>
+</div>
+
+<p class="section-description">
+Historical materials are distributed across books, archives,
+photographs, audio and video collections. BHIMARCHIVE brings
+these resources together into an intelligent discovery layer.
+</p>
+
+</div>
+
+
+<div class="feature-grid">
+
+<div class="feature-card">
+
+<div class="feature-icon">◈</div>
+
+<h3>Fragmented Archives</h3>
+
+<p>
+Historical writings, speeches, photographs and multimedia
+resources can exist across different repositories and formats.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">⌕</div>
+
+<h3>Keyword-Only Search</h3>
+
+<p>
+Traditional search can miss relationships between concepts,
+people, events, speeches and historical documents.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">文</div>
+
+<h3>Language Barrier</h3>
+
+<p>
+Multilingual discovery enables users to explore heritage
+content in languages familiar to them.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">◉</div>
+
+<h3>Fragile Documents</h3>
+
+<p>
+Digitization and preservation reduce repeated physical handling
+of historically valuable documents.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">♿</div>
+
+<h3>Accessibility</h3>
+
+<p>
+Audio narration, accessible interfaces and assistive technology
+can make heritage experiences more inclusive.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">✦</div>
+
+<h3>Passive Learning</h3>
+
+<p>
+Interactive timelines, AI conversations and connected stories
+transform static archives into exploratory experiences.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     SEARCH
+===================================================== -->
+
+<section class="search-area" id="search">
+
+<div class="section-container">
+
+<div class="section-head">
+
+<div>
+
+<div class="section-label">Semantic Discovery</div>
+
+<h2 class="section-title">
+Ask the archive.
+</h2>
+
+</div>
+
+<p class="section-description">
+Search across writings, speeches, constitutional concepts,
+historical events and archival records.
+</p>
+
+</div>
+
+
+<div class="search-box">
+
+<input
+id="searchInput"
+type="text"
+placeholder="Try: Constitution, democracy, education, equality...">
+
+<button onclick="performSearch()">
+Search
+</button>
+
+</div>
+
+
+<div class="search-results" id="searchResults"></div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FEATURES
+===================================================== -->
+
+<section id="features">
+
+<div class="section-container">
+
+<div class="section-head">
+
+<div>
+
+<div class="section-label">Technology</div>
+
+<h2 class="section-title">
+One platform.<br>
+Multiple layers of intelligence.
+</h2>
+
+</div>
+
+<p class="section-description">
+A modular architecture combining archival technology,
+AI retrieval, multilingual access and interactive heritage.
+</p>
+
+</div>
+
+
+<div class="feature-grid">
+
+<div class="feature-card">
+
+<div class="feature-icon">⌕</div>
+
+<h3>Semantic Search</h3>
+
+<p>
+Understands concepts and context instead of relying only
+on exact keyword matching.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">◎</div>
+
+<h3>Knowledge Graph</h3>
+
+<p>
+Connect speeches, writings, events, people and constitutional
+concepts into an explorable knowledge network.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">▣</div>
+
+<h3>AI OCR</h3>
+
+<p>
+Digitize scanned historical documents and transform them into
+searchable text.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">A</div>
+
+<h3>Multilingual AI</h3>
+
+<p>
+Support exploration across multiple Indian languages through
+translation and multilingual interfaces.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">◉</div>
+
+<h3>Audio Narration</h3>
+
+<p>
+Convert archival text into synchronized audio experiences
+for accessible learning.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">▤</div>
+
+<h3>Digital Preservation</h3>
+
+<p>
+Organize metadata and digital objects for long-term archival
+management and retrieval.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     ARCHIVE
+===================================================== -->
+
+<section id="archive">
+
+<div class="section-container">
+
+<div class="section-head">
+
+<div>
+
+<div class="section-label">Digital Collection</div>
+
+<h2 class="section-title">
+Explore the Archive.
+</h2>
+
+</div>
+
+<p class="section-description">
+The interface can unify writings, speeches, photographs,
+audio and video into one discovery experience.
+</p>
+
+</div>
+
+
+<div class="archive-grid">
+
+
+<div class="archive-card">
+
+<div class="archive-img">
+
+<img
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Dr%20B%20R%20Ambedkar%20as%20Barrister%20in%201922.jpg"
+alt="Ambedkar as Barrister">
+
+</div>
+
+<div class="archive-body">
+
+<div class="archive-tag">Historical Photograph</div>
+
+<h3>Ambedkar — 1922</h3>
+
+<p>
+Historical visual record representing Ambedkar's academic
+and professional journey.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="archive-card">
+
+<div class="archive-img">
+
+<img
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Dr%20Ambedkar.jpg"
+alt="Dr Ambedkar">
+
+</div>
+
+<div class="archive-body">
+
+<div class="archive-tag">Digital Heritage</div>
+
+<h3>Photographic Archive</h3>
+
+<p>
+Digitally accessible historical imagery for exploration,
+metadata and storytelling.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="archive-card">
+
+<div class="archive-img">
+
+<img
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Presentation%20of%20portrait%20of%20Dr%20B.R.%20Ambedkar.jpg"
+alt="Presentation of portrait of Dr B R Ambedkar">
+
+</div>
+
+<div class="archive-body">
+
+<div class="archive-tag">Visual History</div>
+
+<h3>Historical Collections</h3>
+
+<p>
+Visual records can be connected to events, dates,
+people and archival documents.
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+<br><br>
+
+<div style="text-align:center">
+
+<a
+href="https://drambedkarwritings.gov.in/content/view_all_photogallery.php"
+target="_blank"
+class="primary-btn">
+
+Explore Official Photo Archive ↗
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     KNOWLEDGE GRAPH
+===================================================== -->
+
+<section class="graph-section" id="knowledge">
+
+<div class="section-container">
+
+<div class="section-head">
+
+<div>
+
+<div class="section-label">AI Knowledge Mapping</div>
+
+<h2 class="section-title">
+Connect the ideas.
+</h2>
+
+</div>
+
+<p class="section-description">
+Instead of searching isolated documents, BHIMARCHIVE can
+connect concepts across the archive.
+</p>
+
+</div>
+
+
+<div class="graph">
+
+<div class="connection line1"></div>
+<div class="connection line2"></div>
+<div class="connection line3"></div>
+<div class="connection line4"></div>
+<div class="connection line5"></div>
+<div class="connection line6"></div>
+
+
+<div class="node main">
+AMBEDKAR
+</div>
+
+<div class="node n1">
+Writings
+</div>
+
+<div class="node n2">
+Constitution
+</div>
+
+<div class="node n3">
+Speeches
+</div>
+
+<div class="node n4">
+Historical Events
+</div>
+
+<div class="node n5">
+Social Justice
+</div>
+
+<div class="node n6">
+Democracy
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     TIMELINE
+===================================================== -->
+
+<section id="timeline">
+
+<div class="section-container">
+
+<div class="section-head">
+
+<div>
+
+<div class="section-label">Interactive Story</div>
+
+<h2 class="section-title">
+A life. A journey. A legacy.
+</h2>
+
+</div>
+
+<p class="section-description">
+An interactive timeline can connect important stages of
+Ambedkar's life with documents and historical context.
+</p>
+
+</div>
+
+
+<div class="timeline">
+
+
+<div class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-card">
+
+<span>1891</span>
+
+<h3>Birth</h3>
+
+<p>
+Bhimrao Ramji Ambedkar was born on 14 April 1891 at Mhow.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-card">
+
+<span>1913</span>
+
+<h3>Higher Education</h3>
+
+<p>
+Ambedkar travelled to the United States for higher education
+at Columbia University.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-card">
+
+<span>1920s</span>
+
+<h3>Public Leadership</h3>
+
+<p>
+His writings, journalism and social movements became
+important parts of his public work.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-card">
+
+<span>1947</span>
+
+<h3>Constitutional Role</h3>
+
+<p>
+Ambedkar became Chairman of the Drafting Committee of
+the Constituent Assembly.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-card">
+
+<span>1950</span>
+
+<h3>Constitution</h3>
+
+<p>
+The Constitution of India came into effect on
+26 January 1950.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-card">
+
+<span>1956</span>
+
+<h3>Final Chapter</h3>
+
+<p>
+Ambedkar passed away on 6 December 1956 in New Delhi.
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     AI ASSISTANT
+===================================================== -->
+
+<section class="ai-section" id="assistant">
+
+<div class="section-container">
+
+<div class="section-head">
+
+<div>
+
+<div class="section-label">BHIMARCHIVE AI</div>
+
+<h2 class="section-title">
+Ask. Discover. Understand.
+</h2>
+
+</div>
+
+<p class="section-description">
+A research assistant interface designed to provide
+source-linked answers from the digital heritage collection.
+</p>
+
+</div>
+
+
+<div class="ai-container">
+
+
+<div class="ai-info">
+
+<h3>
+Your Digital Research Companion
+</h3>
+
+<p>
+Ask questions about Ambedkar's writings, speeches,
+constitutional work and historical journey.
+</p>
+
+<br>
+
+<p>
+In a production implementation, responses would be
+retrieved from verified archival documents and displayed
+with citations and source references.
+</p>
+
+<br>
+
+<button
+class="primary-btn"
+onclick="showModal()">
+How BHIMARCHIVE Works
+</button>
+
+</div>
+
+
+<div class="chat-box">
+
+<div class="chat-header">
+
+<div class="status-dot"></div>
+
+<strong>BHIMARCHIVE AI</strong>
+
+<span style="margin-left:auto;color:#78879a;font-size:11px;">
+Research Assistant
+</span>
+
+</div>
+
+
+<div class="chat-messages" id="chatMessages">
+
+<div class="message bot">
+
+Namaste. I am BHIMARCHIVE, your digital heritage
+research assistant. Ask me about Ambedkar's
+writings, speeches, Constitution-related work,
+or historical events.
+
+</div>
+
+</div>
+
+
+<div class="chat-input">
+
+<input
+id="chatInput"
+placeholder="Ask something..."
+onkeydown="handleChat(event)">
+
+<button onclick="sendMessage()">
+Send
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     MULTILINGUAL
+===================================================== -->
+
+<section>
+
+<div class="section-container">
+
+<div class="section-head">
+
+<div>
+
+<div class="section-label">Inclusive Access</div>
+
+<h2 class="section-title">
+Heritage in your language.
+</h2>
+
+</div>
+
+<p class="section-description">
+The official Government of India Ambedkar portal currently
+provides content in multiple Indian languages.
+</p>
+
+</div>
+
+
+<div class="language-grid">
+
+<div class="lang active">English</div>
+<div class="lang">தமிழ்</div>
+<div class="lang">हिन्दी</div>
+<div class="lang">বাংলা</div>
+<div class="lang">ગુજરાતી</div>
+<div class="lang">ਪੰਜਾਬੀ</div>
+<div class="lang">తెలుగు</div>
+<div class="lang">ಕನ್ನಡ</div>
+<div class="lang">മലയാളം</div>
+<div class="lang">मराठी</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     ACCESSIBILITY
+===================================================== -->
+
+<section id="accessibility">
+
+<div class="section-container">
+
+<div class="section-head">
+
+<div>
+
+<div class="section-label">Accessibility</div>
+
+<h2 class="section-title">
+Designed for everyone.
+</h2>
+
+</div>
+
+<p class="section-description">
+The proposed platform combines accessible digital interfaces,
+audio narration, multilingual content and physical kiosk
+support.
+</p>
+
+</div>
+
+
+<div class="feature-grid">
+
+<div class="feature-card">
+
+<div class="feature-icon">🔊</div>
+
+<h3>Audio Narration</h3>
+
+<p>
+Text-to-speech enables users to listen to archival documents
+and historical explanations.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">⠿</div>
+
+<h3>Braille Support</h3>
+
+<p>
+Future kiosk deployments can integrate Braille terminals
+and tactile interfaces.
+</p>
+
+</div>
+
+
+<div class="feature-card">
+
+<div class="feature-icon">♿</div>
+
+<h3>Accessible Kiosk</h3>
+
+<p>
+Height-adjustable displays, large controls and clear
+navigation support diverse visitors.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<div class="section-container">
+
+<div class="cta">
+
+<div class="section-label">
+BHIMARCHIVE DIGITAL HERITAGE
+</div>
+
+<h2>
+Preserve the past.<br>
+Intelligence for the future.
+</h2>
+
+<p>
+A unified digital ecosystem for discovering, understanding
+and experiencing Dr. B. R. Ambedkar's writings, speeches,
+ideas and historical legacy.
+</p>
+
+<a
+href="https://drambedkarwritings.gov.in/content/"
+target="_blank"
+class="primary-btn">
+
+Open Official Archive ↗
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+<div class="footer-content">
+
+<div class="footer-brand">
+
+<div class="logo">
+
+<div class="logo-icon">B</div>
+BHIM<span>ARCHIVE</span>
+
+</div>
+
+<p>
+AI-powered digital heritage and institutional knowledge
+platform concept dedicated to the preservation and
+exploration of Dr. B. R. Ambedkar's legacy.
+</p>
+
+</div>
+
+
+<div class="footer-links">
+
+<a href="#home">Home</a>
+<a href="#archive">Archive</a>
+<a href="#knowledge">Knowledge</a>
+<a href="#assistant">AI</a>
+
+<a
+href="https://drambedkarwritings.gov.in/content/"
+target="_blank">
+Official Source ↗
+</a>
+
+</div>
+
+</div>
+
+
+<div class="footer-bottom">
+
+© 2026 BHIMARCHIVE — Digital Heritage Platform Concept.
+Historical source material linked to the Government of India's
+Dr. Ambedkar Foundation archive.
+
+</div>
+
+</footer>
+
+
+<!-- =====================================================
+     MODAL
+===================================================== -->
+
+<div class="modal" id="modal">
+
+<div class="modal-box">
+
+<div class="close" onclick="closeModal()">×</div>
+
+<div class="section-label">
+BHIMARCHIVE AI
+</div>
+
+<h2 style="font-family:'Playfair Display';font-size:35px;margin-bottom:15px;">
+How the platform works
+</h2>
+
+<p style="color:#aab7c7;line-height:1.8;">
+
+1. Historical documents are digitized using OCR.<br><br>
+
+2. Metadata is attached to every digital object.<br><br>
+
+3. AI embeddings enable semantic retrieval.<br><br>
+
+4. Knowledge graphs connect related concepts.<br><br>
+
+5. The AI assistant retrieves relevant archival sources.<br><br>
+
+6. Users receive answers together with source references.
+
+</p>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+function toggleMenu(){
+
+    document
+        .getElementById("navLinks")
+        .classList.toggle("active");
+
+}
+
+
+/* =========================================================
+   COUNTERS
+========================================================= */
+
+const counters =
+document.querySelectorAll(".counter");
+
+const observer =
+new IntersectionObserver(entries => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+            const counter = entry.target;
+
+            const target =
+                Number(counter.dataset.target);
+
+            let current = 0;
+
+            const increment =
+                target / 80;
+
+            const update = () => {
+
+                current += increment;
+
+                if(current < target){
+
+                    counter.innerText =
+                        Math.floor(current).toLocaleString();
+
+                    requestAnimationFrame(update);
+
+                }else{
+
+                    counter.innerText =
+                        target.toLocaleString();
+
+                }
+
+            };
+
+            update();
+
+            observer.unobserve(counter);
+
+        }
+
+    });
+
+},{threshold:.5});
+
+
+counters.forEach(counter =>
+    observer.observe(counter)
+);
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+const searchData = [
+
+{
+title:"Constitution of India",
+keywords:"constitution constitutional drafting democracy rights",
+description:"Explore constitutional concepts and historical records connected with Ambedkar's constitutional work."
+},
+
+{
+title:"Writings & Speeches",
+keywords:"books writings speech literature",
+description:"Search across the digital writings and speeches collection."
+},
+
+{
+title:"Social Justice",
+keywords:"equality justice caste rights society",
+description:"Discover documents and ideas related to social justice and equality."
+},
+
+{
+title:"Education",
+keywords:"education university knowledge students",
+description:"Explore Ambedkar's writings and historical contributions related to education."
+},
+
+{
+title:"Democracy",
+keywords:"democracy liberty equality fraternity constitution",
+description:"Explore concepts connected to democratic institutions and constitutional philosophy."
+},
+
+{
+title:"Historical Timeline",
+keywords:"birth education london constitution 1947 1950 1956",
+description:"Navigate important events through an interactive chronological experience."
+}
+
+];
+
+
+function performSearch(){
+
+    const query =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const results =
+        document.getElementById("searchResults");
+
+    results.innerHTML = "";
+
+    if(!query){
+
+        results.style.display="none";
+
+        return;
+    }
+
+
+    const matches =
+        searchData.filter(item =>
+            (
+                item.title +
+                " " +
+                item.keywords +
+                " " +
+                item.description
+            )
+            .toLowerCase()
+            .includes(query)
+        );
+
+
+    if(matches.length === 0){
+
+        results.innerHTML = `
+            <div class="result">
+                <b>No direct result found</b>
+                <p>
+                Try terms such as Constitution,
+                democracy, education, equality or writings.
+                </p>
+            </div>
+        `;
+
+    }else{
+
+        matches.forEach(item => {
+
+            results.innerHTML += `
+                <div class="result">
+                    <b>${item.title}</b>
+                    <p>${item.description}</p>
+                </div>
+            `;
+
+        });
+
+    }
+
+    results.style.display="block";
+}
+
+
+/* ENTER KEY SEARCH */
+
+document
+.getElementById("searchInput")
+.addEventListener("keydown",function(event){
+
+    if(event.key === "Enter"){
+
+        performSearch();
+
+    }
+
+});
+
+
+/* =========================================================
+   AI CHAT DEMO
+========================================================= */
+
+function handleChat(event){
+
+    if(event.key === "Enter"){
+
+        sendMessage();
+
+    }
+
+}
+
+
+function sendMessage(){
+
+    const input =
+        document.getElementById("chatInput");
+
+    const messages =
+        document.getElementById("chatMessages");
+
+    const question =
+        input.value.trim();
+
+    if(!question) return;
+
+
+    messages.innerHTML += `
+        <div class="message user">
+            ${escapeHTML(question)}
+        </div>
+    `;
+
+
+    let answer =
+    "This demo assistant would retrieve the answer from the verified BHIMARCHIVE archival knowledge base and provide source-linked references.";
+
+
+    const q =
+        question.toLowerCase();
+
+
+    if(q.includes("constitution")){
+
+        answer =
+        "The production version can retrieve Constitution-related writings, speeches and historical documents, then provide the relevant source references.";
+
+    }
+
+    else if(q.includes("education")){
+
+        answer =
+        "The archive can connect Ambedkar's writings and speeches related to education with relevant historical documents.";
+
+    }
+
+    else if(q.includes("democracy")){
+
+        answer =
+        "BHIMARCHIVE can semantically connect documents discussing democracy, equality, liberty, representation and constitutional institutions.";
+
+    }
+
+    else if(q.includes("speech")){
+
+        answer =
+        "The Government of India's official Ambedkar archive provides writings, speeches, audio and video resources that can form the source layer.";
+
+    }
+
+
+    setTimeout(() => {
+
+        messages.innerHTML += `
+            <div class="message bot">
+                ${answer}
+            </div>
+        `;
+
+        messages.scrollTop =
+            messages.scrollHeight;
+
+    },500);
+
+
+    input.value="";
+
+}
+
+
+/* SECURITY */
+
+function escapeHTML(str){
+
+    return str
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+function showModal(){
+
+    document
+        .getElementById("modal")
+        .style.display="flex";
+
+}
+
+
+function closeModal(){
+
+    document
+        .getElementById("modal")
+        .style.display="none";
+
+}
+
+
+window.addEventListener("click",function(event){
+
+    const modal =
+        document.getElementById("modal");
+
+    if(event.target === modal){
+
+        closeModal();
+
+    }
+
+});
+
+
+/* =========================================================
+   LANGUAGE SELECTOR
+========================================================= */
+
+document
+.querySelectorAll(".lang")
+.forEach(lang => {
+
+    lang.addEventListener("click",function(){
+
+        document
+        .querySelectorAll(".lang")
+        .forEach(item =>
+            item.classList.remove("active")
+        );
+
+        this.classList.add("active");
+
+    });
+
+});
+
+
+/* =========================================================
+   CLOSE MOBILE MENU AFTER CLICK
+========================================================= */
+
+document
+.querySelectorAll(".nav-links a")
+.forEach(link => {
+
+    link.addEventListener("click",() => {
+
+        document
+        .getElementById("navLinks")
+        .classList.remove("active");
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
